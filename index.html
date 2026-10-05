@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFA Student Login Authentication</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <span class="logo-box">A</span>
+        <div>
+            <h2>DFA Authentication</h2>
+            <p>ATCD Mini Project</p>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <button onclick="showSection('login')">Student Login</button>
+        <button onclick="showSection('about')">About</button>
+        <button onclick="showSection('programs')">Programs</button>
+        <button onclick="showSection('projects')">Projects</button>
+        <button onclick="showSection('contact')">Contact Us</button>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search">
+        <button onclick="searchSection()">🔍</button>
+    </div>
+</nav>
+
+<main>
+
+    <section id="login" class="section active">
+        <div class="hero">
+            <div class="hero-text">
+                <span class="tag">AUTOMATA THEORY & COMPILER DESIGN</span>
+                <h1>DFA Student Login<br>Authentication</h1>
+                <p>
+                    A student authentication system that uses
+                    Deterministic Finite Automata to validate
+                    email and password inputs.
+                </p>
+            </div>
+
+            <div class="login-card">
+                <h2>Student Login</h2>
+                <p class="login-subtitle">Enter your credentials</p>
+
+                <label>Email</label>
+                <input
+                    type="text"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                >
+
+                <button class="validate-btn" onclick="validateLogin()">
+                    Validate Login
+                </button>
+
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <div class="dfa-section">
+            <div class="section-heading">
+                <span>DFA VISUALIZATION</span>
+                <h2>Authentication State Transition</h2>
+                <p>
+                    Enter your credentials and validate them to see
+                    how the DFA processes each character.
+                </p>
+            </div>
+
+            <div class="dfa-card">
+                <h3>Email DFA</h3>
+                <div id="emailDfa" class="dfa-container">
+                    <p class="empty-message">
+                        Enter an email and click Validate Login.
+                    </p>
+                </div>
+            </div>
+
+            <div class="dfa-card">
+                <h3>Password DFA</h3>
+                <div id="passwordDfa" class="dfa-container">
+                    <p class="empty-message">
+                        Enter a password and click Validate Login.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="page-header">
+            <span>ABOUT THE PROJECT</span>
+            <h1>DFA Student Login Authentication</h1>
+            <p>
+                Understanding how Deterministic Finite Automata can
+                be used for student authentication and input validation.
+            </p>
+        </div>
+
+        <div class="content-grid">
+
+            <div class="info-card">
+                <div class="card-icon">01</div>
+                <h2>Project Overview</h2>
+                <p>
+                    This mini-project demonstrates a student login
+                    authentication system using the concepts of
+                    Automata Theory and Deterministic Finite Automata.
+                    The system validates the student's email and
+                    password by processing their input character by
+                    character through DFA states.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">02</div>
+                <h2>What is DFA?</h2>
+                <p>
+                    A Deterministic Finite Automaton is a mathematical
+                    model used to recognize patterns. For every state
+                    and input symbol, a DFA has a definite transition
+                    to another state.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">03</div>
+                <h2>Authentication Process</h2>
+                <p>
+                    The system reads the entered email and password.
+                    Every character is processed through a sequence
+                    of states. If the input reaches the accepting
+                    state, it is considered valid. Otherwise, it is
+                    rejected.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">04</div>
+                <h2>Project Objective</h2>
+                <p>
+                    The main objective is to understand how theoretical
+                    concepts of finite automata can be implemented in
+                    a practical web-based authentication application.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">05</div>
+                <h2>Why DFA?</h2>
+                <p>
+                    DFA provides a simple and deterministic way to
+                    represent validation rules. Each input character
+                    produces a predictable state transition, making
+                    the authentication process easy to visualize.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">06</div>
+                <h2>Expected Outcome</h2>
+                <p>
+                    The project helps students understand states,
+                    transitions, accepting states, rejected inputs,
+                    and how automata concepts can be connected with
+                    real-world input validation.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="flow-box">
+            <h2>Authentication Flow</h2>
+            <div class="flow">
+                <div>Student Input</div>
+                <span>→</span>
+                <div>Email Validation</div>
+                <span>→</span>
+                <div>Password Validation</div>
+                <span>→</span>
+                <div>DFA Transition</div>
+                <span>→</span>
+                <div>Accept / Reject</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="section">
+        <div class="page-header">
+            <span>PROGRAM LOGIC</span>
+            <h1>Technologies & Program Logic</h1>
+            <p>
+                Technologies and automata concepts used to build
+                the DFA Student Login Authentication system.
+            </p>
+        </div>
+
+        <div class="content-grid">
+
+            <div class="info-card">
+                <div class="card-icon">01</div>
+                <h2>HTML</h2>
+                <p>
+                    HTML is used to create the structure of the login
+                    page, navigation bar, input fields, buttons,
+                    authentication result, and project sections.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">02</div>
+                <h2>CSS</h2>
+                <p>
+                    CSS is used to design the interface, cards,
+                    navigation bar, login form, DFA visualization,
+                    buttons, responsive layout, and overall appearance.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">03</div>
+                <h2>JavaScript</h2>
+                <p>
+                    JavaScript handles user input, validation,
+                    navigation between sections, authentication
+                    results, and dynamic DFA state generation.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">04</div>
+                <h2>DFA Logic</h2>
+                <p>
+                    DFA logic processes every character of the input
+                    and moves from one state to another according to
+                    predefined transitions.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">05</div>
+                <h2>Email Validation</h2>
+                <p>
+                    The email DFA verifies that the entered email has
+                    a valid local part and ends with the required
+                    domain: @ashokacollege.in.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">06</div>
+                <h2>Password Validation</h2>
+                <p>
+                    The password DFA compares every entered character
+                    with the predefined authentication pattern and
+                    accepts the input only when the complete pattern
+                    matches.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">07</div>
+                <h2>SVG Visualization</h2>
+                <p>
+                    SVG is used to display DFA states and transitions
+                    visually. Each character creates a transition
+                    from one state to the next state.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">08</div>
+                <h2>Program Flow</h2>
+                <p>
+                    Input → Read Character → Find Transition →
+                    Move to Next State → Continue Processing →
+                    Accept or Reject.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="flow-box">
+            <h2>Program Execution Flow</h2>
+            <div class="flow">
+                <div>Input</div>
+                <span>→</span>
+                <div>Read Character</div>
+                <span>→</span>
+                <div>Find Transition</div>
+                <span>→</span>
+                <div>Next State</div>
+                <span>→</span>
+                <div>Accept / Reject</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="page-header">
+            <span>PROJECT MODULES</span>
+            <h1>DFA Authentication Modules</h1>
+            <p>
+                Different modules implemented as part of the
+                DFA Student Login Authentication mini-project.
+            </p>
+        </div>
+
+        <div class="content-grid">
+
+            <div class="info-card">
+                <div class="card-icon">01</div>
+                <h2>Student Login Module</h2>
+                <p>
+                    Provides the login interface where students enter
+                    their email and password before authentication.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">02</div>
+                <h2>Email DFA Module</h2>
+                <p>
+                    Processes the email character by character and
+                    verifies the required @ashokacollege.in domain.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">03</div>
+                <h2>Password DFA Module</h2>
+                <p>
+                    Processes the password using sequential states
+                    and checks whether the complete password pattern
+                    is correct.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">04</div>
+                <h2>DFA Diagram Module</h2>
+                <p>
+                    Dynamically creates states and transitions so that
+                    the user can visually understand how each character
+                    is processed by the DFA.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">05</div>
+                <h2>Authentication Result</h2>
+                <p>
+                    After both inputs are processed, the system
+                    displays whether the login credentials are valid
+                    or invalid.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">06</div>
+                <h2>Future Enhancements</h2>
+                <p>
+                    The project can be extended with database
+                    authentication, multiple student accounts,
+                    registration, password recovery, and improved
+                    security mechanisms.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="workflow-project">
+            <h2>Project Workflow</h2>
+
+            <div class="project-flow">
+                <div class="project-step">
+                    <strong>01</strong>
+                    <span>Student</span>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="project-step">
+                    <strong>02</strong>
+                    <span>Login Form</span>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="project-step">
+                    <strong>03</strong>
+                    <span>Email DFA</span>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="project-step">
+                    <strong>04</strong>
+                    <span>Password DFA</span>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="project-step">
+                    <strong>05</strong>
+                    <span>Authentication</span>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="project-step">
+                    <strong>06</strong>
+                    <span>Result</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="page-header">
+            <span>PROJECT CONTACT</span>
+            <h1>Contact Us</h1>
+            <p>
+                Project-related information and academic details.
+            </p>
+        </div>
+
+        <div class="contact-card">
+
+            <div class="contact-item">
+                <span>Student</span>
+                <strong>T. Nandhini</strong>
+            </div>
+
+            <div class="contact-item">
+                <span>Subject</span>
+                <strong>Automata Theory & Compiler Design</strong>
+            </div>
+
+            <div class="contact-item">
+                <span>Project</span>
+                <strong>DFA Student Login Authentication</strong>
+            </div>
+
+            <div class="contact-item">
+                <span>College</span>
+                <strong>Ashoka Women's Engineering College</strong>
+            </div>
+
+            <div class="contact-item">
+                <span>Academic Year</span>
+                <strong>2026</strong>
+            </div>
+
+        </div>
+
+        <div class="contact-message">
+            <h2>Project Purpose</h2>
+            <p>
+                This project demonstrates the practical application
+                of Deterministic Finite Automata for authentication
+                and input validation as part of the Automata Theory
+                & Compiler Design subject.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <h3>DFA Student Login Authentication</h3>
+    <p>ATCD Mini Project</p>
+    <p>Student: T. Nandhini</p>
+    <p>Automata Theory & Compiler Design</p>
+    <p>© 2026 T. Nandhini</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
